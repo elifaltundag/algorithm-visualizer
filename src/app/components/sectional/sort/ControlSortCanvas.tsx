@@ -7,6 +7,7 @@ import SortCanvas from "./SortCanvas";
 
 // Functions 
 import { generateSortedArr, shuffleArr } from "../../../functions/arrayFuncs";
+import { bubbleSort } from "../../../functions/sortFuncs";
 
 export default function ControlSortCanvas() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -22,13 +23,19 @@ export default function ControlSortCanvas() {
     sortData.shuffledArr = shuffledArray
 
 
+    const {algorithmSteps, iterationCount, swapCount} = bubbleSort(shuffledArray)
+
+    sortData.algorithmSteps = algorithmSteps
+    sortData.iterationCount = iterationCount
+    sortData.swapCount = swapCount
+
+    console.log({algorithmSteps, iterationCount, swapCount})
+
     return (
         <SortCanvas 
             canvasRef={canvasRef}
             width={1200}
-            height={1200}
-            numElms={numElms}
-            sortedArr={sortedArray}
+            height={600}
             shuffledArr={shuffledArray}
         />
     )

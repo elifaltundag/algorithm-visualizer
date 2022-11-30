@@ -8,13 +8,11 @@ interface SortCanvasProps {
     width: number;
     height: number;
     canvasRef: React.RefObject<HTMLCanvasElement>;
-    numElms: number;
-    sortedArr: Array<number>;
     shuffledArr: Array<number>
 }
 
 export default function SortCanvas(props: SortCanvasProps) {
-    const { width, height, canvasRef, numElms, sortedArr, shuffledArr } = props;
+    const { width, height, canvasRef, shuffledArr } = props;
 
 
 
@@ -24,8 +22,7 @@ export default function SortCanvas(props: SortCanvasProps) {
             const canvasContext = canvas.getContext("2d")
 
             if (canvasContext) {
-                generateBars(sortedArr, canvasContext);
-                generateBars(shuffledArr, canvasContext, 600);
+                generateBars(shuffledArr, canvasContext);
             }
         }
     })

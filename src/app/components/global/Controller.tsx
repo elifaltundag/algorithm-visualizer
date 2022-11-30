@@ -9,16 +9,17 @@ export default function Controller() {
         <div className="controller">
             <div className="animation-controls">
                 <label id="speed-label" htmlFor="animation-speed">Animation Speed</label>
-                <input id="speed-control" type="range" name="animation-speed" min="1" max="100" defaultValue="50" />
+                <input id="speed-control" type="range" name="animation-speed" min="0" max="100" defaultValue="50" />
                 
-                <button id="btn--start">Start</button>
-                <button id="btn--pause">Pause</button>
-                <button id="btn--restart">Restart</button>
+                <button id="btn--start" className="btn--control">Start</button>
+                <button id="btn--pause" className="btn--control">Pause</button>
+                <button id="btn--restart" className="btn--control">Restart</button>
+                <button id="btn--shuffle" className="btn--control">Shuffle</button>
             </div>
 
             <div className="algorithm-controls">
-                <button id="btn--prev-step">Prev Step</button>
-                <button id="btn--next-step">Next Step</button>
+                <button id="btn--prev-step" className="btn--control">Prev Step</button>
+                <button id="btn--next-step" className="btn--control">Next Step</button>
             </div>
             
         </div>

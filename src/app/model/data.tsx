@@ -37,9 +37,10 @@ interface SearchData {
 class SortData {
     constructor(
         public _numElms: number,
-        public _iterationCount: number = 0,
         public _sortedArr: Array<number> = [],
         public _shuffledArr: Array<number> = [],
+        public _iterationCount: number = 0,
+        public _swapCount: number = 0,
         public _algorithmSteps: Array<object> = []
     ) {}
 
@@ -60,6 +61,10 @@ class SortData {
         return this._iterationCount
     }
 
+    public get swapCount() {
+        return this._swapCount
+    }
+
     public get algorithmSteps() {
         return this._algorithmSteps
     }
@@ -77,7 +82,15 @@ class SortData {
         this._shuffledArr = newArr
     }
 
-    public set algorithmsSteps(newArr: Array<object>) {
+    public set iterationCount(iter: number) {
+        this._iterationCount = iter
+    }
+
+    public set swapCount(swap: number) {
+        this._swapCount = swap
+    }
+
+    public set algorithmSteps(newArr: Array<object>) {
         this._algorithmSteps = newArr
     }
 }

@@ -1,11 +1,11 @@
 .animation-controls {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, auto);
     grid-template-areas: 
-        "speed-label speed-label speed-label"
-        "speed-control speed-control speed-control"
-        "btn-start btn-pause btn-restart"
+        "speed-label speed-label speed-label speed-label"
+        "speed-control speed-control speed-control speed-control"
+        "btn-start btn-pause btn-restart btn-shuffle"
 }
 
 #btn--start {
@@ -26,5 +26,9 @@
 
 #speed-control {
     grid-area: speed-control;
+}
+
+#btn--shuffle {
+    grid-area: btn-shuffle;
 }
 
