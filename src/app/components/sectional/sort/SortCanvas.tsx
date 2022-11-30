@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import "../../styles/components/canvas.scss";
+import "../../../../design/components/canvas.scss";
 
 import { generateBars } from "../../../functions/drawFuncs"; 
 

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Navbar from './app/components/global/Navbar';
-import Header from './app/components/global/Header';
+import BubbleSort from './app/pages/BubbleSort';
 
 function App() {
     return (
         <div className="App">
             <Navbar />
-            <Header />
+            <BubbleSort />
         </div>
     );
 }
