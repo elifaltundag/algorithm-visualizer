@@ -1,0 +1,8 @@
+@use "../utilities/media-queries" as *;
+
+.app {
+    @include media-query("min", "large") {
+        display: grid;
+        grid-template-columns: 20% 80%;
+    }
+}

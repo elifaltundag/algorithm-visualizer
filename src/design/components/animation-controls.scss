@@ -1,0 +1,30 @@
+.animation-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 
+        "speed-label speed-label speed-label"
+        "speed-control speed-control speed-control"
+        "btn-start btn-pause btn-restart"
+}
+
+#btn--start {
+    grid-area: btn-start;
+}
+
+#btn--pause {
+    grid-area: btn-pause;
+}
+
+#btn--restart {
+    grid-area: btn-restart;
+}
+
+#speed-label {
+    grid-area: speed-label;
+}
+
+#speed-control {
+    grid-area: speed-control;
+}
+

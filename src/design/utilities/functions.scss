@@ -1,0 +1,17 @@
+@use "sass:math";
+
+/* Converts pixel to rem || em */
+@function convert-pixel($pixel, $new_unit) {
+    @if $new_unit == rem or $new_unit == em {
+        @if math.is-unitless($pixel) {
+            @return math.div($pixel, 16) + $new_unit;
+        }
+        @else {
+            @error "Don't use px unit!";
+        }
+    }
+
+    @else {
+        @error "convert-pixel() function converts pixel to rem or em only, no other units"
+    }
+}

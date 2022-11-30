@@ -1,0 +1,56 @@
+@use "sass:string";
+@use "sass:map";
+
+@use "functions" as f;
+
+/* 
+* Using the same breakpoints for lower and upper bounds can cause unwanted behavior: delta = 0.02px
+   0px <= xsmall <  576px
+ 576px <= small  <  768px
+ 768px <= medium <  992px
+ 992px <= large  < 1200px
+1200px <= xlarge < 1400px
+1400px <= xxlarge
+
+* lower bounds : min-width
+* upper bounds : max-width
+*/
+
+$breakpoints: (
+    "xs-sm" : 576,
+    "sm-md" : 768,
+    "md-lr" : 992,
+    "lr-xl" : 1200,
+    "xl-xxl": 1400
+);
+
+$breakpoints-lower-bounds: (
+    "small"  : f.convert-pixel(576, em),
+    "medium" : f.convert-pixel(768, em),
+    "large"  : f.convert-pixel(992, em),
+    "xlarge" : f.convert-pixel(1200, em),
+    "xxlarge": f.convert-pixel(1400, em)
+);
+
+$breakpoints-upper-bounds: (
+    "xsmall" : f.convert-pixel(575.98, em),
+    "small"  : f.convert-pixel(767.98, em),
+    "medium" : f.convert-pixel(991.98, em),
+    "large"  : f.convert-pixel(1199.98, em),
+    "xlarge" : f.convert-pixel(1399.98, em)
+);
+
+/* Enter $size in pixel, without unit */
+@mixin media-query($min-or-max, $size) {
+    @if $min-or-max == "min" {
+        @media (min-width: map-get($breakpoints-lower-bounds, $size)) {
+            @content;
+        }    
+    } 
+    
+    @else if $min-or-max == "max" {
+        @media (max-width: map-get($breakpoints-upper-bounds, $size)) {
+            @content;
+        }
+    } 
+}

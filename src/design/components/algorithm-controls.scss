@@ -1,0 +1,14 @@
+.algorithm-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "prev-step next-step";
+}
+
+#btn--prev-step {
+    grid-area: prev-step;
+}
+
+#btn--next-step {
+    grid-area: next-step;
+}

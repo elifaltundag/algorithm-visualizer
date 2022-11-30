@@ -1,0 +1,66 @@
+@use "../utilities/media-queries.scss" as *;
+
+ul {
+    padding-inline-start: 0.5em;
+}
+
+li {
+    list-style: none;
+}
+
+#navbar {
+    background-color: rgb(18, 55, 70);
+    padding-block-start: 0.5em;
+    padding-inline-end: 0.5em;
+    position: absolute;
+    height: 100%;
+
+    
+    &[data-displayed-on-mobile=false] {
+        transform: translateX(-110%);
+        transition: transform 200ms ease;
+    }
+    
+    &[data-displayed-on-mobile=true] {
+        transform: translateX(0%);
+        transition: transform 200ms ease;
+    }
+
+    @include media-query("min", "large") {
+        position: relative;
+
+        &[data-displayed-on-mobile=false],
+        &[data-displayed-on-mobile=true] {
+            transform: translateX(0%);
+        }
+    }
+}
+
+
+.nav-btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding-inline-start: 1em;
+
+    &:hover {
+        background-color: cornflowerblue;
+    }
+
+    &__main {
+        @extend .nav-btn;
+
+    }
+
+    &__section {
+        @extend .nav-btn;
+
+    }
+
+    &__subsection {
+        @extend .nav-btn;
+
+    }
+}
+
+
