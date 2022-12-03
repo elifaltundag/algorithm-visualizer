@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 
 import "../../../../design/components/canvas.scss";
 
-import { generateBars } from "../../../functions/drawFuncs"; 
+import { SortAlgorithmStep } from "../../../functions/sortFuncs";
+import { generateBars, regenerateBars } from "../../../functions/drawFuncs"; 
 
 interface SortCanvasProps {
     canvasRef: React.RefObject<HTMLCanvasElement>;
     shuffledArr: Array<number>;
-    sortedArr: Array<number>
+    sortedArr: Array<number>;
+    algorithmSteps: Array<SortAlgorithmStep>
 }
 
 export default function SortCanvas(props: SortCanvasProps) {
-    const { canvasRef, shuffledArr, sortedArr } = props;
+    const { canvasRef, shuffledArr, sortedArr, algorithmSteps } = props;
 
     useEffect(() => {
         if (canvasRef.current) {
@@ -19,8 +21,9 @@ export default function SortCanvas(props: SortCanvasProps) {
             const canvasContext = canvas.getContext("2d")
 
             if (canvasContext) {
-                generateBars(shuffledArr, canvasContext);
-                generateBars(sortedArr, canvasContext, 600)
+                /* generateBars(shuffledArr, canvasContext);
+                generateBars(sortedArr, canvasContext, 600) */
+                regenerateBars(shuffledArr, algorithmSteps, canvasContext)
             }
         }
     })

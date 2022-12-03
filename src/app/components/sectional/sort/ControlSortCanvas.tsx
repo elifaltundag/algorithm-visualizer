@@ -38,6 +38,7 @@ export default function ControlSortCanvas() {
             canvasRef={canvasRef}
             shuffledArr={shuffledArray}
             sortedArr={sortedArray}
+            algorithmSteps={algorithmSteps}
         />
     )
 }
