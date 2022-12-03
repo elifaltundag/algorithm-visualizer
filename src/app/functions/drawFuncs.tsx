@@ -1,10 +1,33 @@
-export function generateBars(barsArr: Array<number>, ctx: CanvasRenderingContext2D, start = 60, unitLength = 10) {
+import { SortAlgorithmStep } from "./sortFuncs";
+
+export function generateBars(barsArr: Array<number>, ctx: CanvasRenderingContext2D, start = 60, unitLength = 10) {    
     let lastStartPos = start
 
     ctx.fillStyle = "hsl(200, 50%, 50%)";
 
     for (let bar of barsArr) {
-        ctx.fillRect(lastStartPos + 2 * unitLength, unitLength, unitLength, bar * unitLength * 2)
-        lastStartPos += 2 * unitLength
+        ctx.fillRect(lastStartPos + 2 * unitLength, ctx.canvas.clientHeight / 2, unitLength, - bar * unitLength)
+        lastStartPos += unitLength
     }
+
+    /* 
+    If index === (first || second)Index --> different color
+    Else original color 
+    */
+}
+
+export function regenerateBars(algorithmSteps: Array<SortAlgorithmStep>, ctx: CanvasRenderingContext2D, startX = 60) {
+    const regularBarStyle = "hsl(200, 50%, 50%)";
+    const highlightedBarStyle = "hsl(20, 50%, 50%)";
+
+    
+}
+
+export function runBubbleSort(bubbleSortAlgorithmSteps: Array<SortAlgorithmStep>) {
+    /* 
+    If index === (first || second)Index --> different color
+    Else original color 
+    */
+     
+
 }
