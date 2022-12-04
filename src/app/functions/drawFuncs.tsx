@@ -6,39 +6,25 @@ export function generateBars(barsArr: Array<number>, ctx: CanvasRenderingContext
     ctx.fillStyle = "hsl(200, 50%, 50%)";
 
     for (let bar of barsArr) {
-        ctx.fillRect(lastStartPos + 2 * unitLength, ctx.canvas.clientHeight / 2, unitLength, - bar * unitLength)
-        lastStartPos += unitLength
-    }
-
-    /* 
-    If index === (first || second)Index --> different color
-    Else original color 
-    */
-}
-
-export function regenerateBars(barsArr: Array<number>, algorithmSteps: Array<SortAlgorithmStep>, ctx: CanvasRenderingContext2D, start = 60, unitLength = 10) {
-    const regularBarStyle = "hsl(200, 50%, 50%)";
-    const highlightedBarStyle = "hsl(20, 50%, 50%)";
-
-    let lastStartPos = start
-
-    // Just draw the first step
-    for (let barIndex = 0; barIndex < barsArr.length; barIndex++) {
-        if (barIndex === algorithmSteps[1].firstIndex || barIndex === algorithmSteps[1].secondIndex) {
-            ctx.fillStyle = highlightedBarStyle
-        } else {
-            ctx.fillStyle = regularBarStyle
-        }
-        ctx.fillRect(lastStartPos + 2 * unitLength, ctx.canvas.clientHeight / 2, unitLength, - barsArr[barIndex] * unitLength)
+        ctx.fillRect(lastStartPos, ctx.canvas.clientHeight / 2 - 50, unitLength, - bar * unitLength)
         lastStartPos += unitLength
     }
 }
 
-export function runBubbleSort(bubbleSortAlgorithmSteps: Array<SortAlgorithmStep>) {
-    /* 
-    If index === (first || second)Index --> different color
-    Else original color 
-    */
-     
+export function generateBubbleSortFrame(ctx: CanvasRenderingContext2D, step: SortAlgorithmStep) {
+    // Rect fill colors 
+    const regularBarStyle = "hsl(200, 50%, 50%)"
+    const highlightedBarStyle = "hsl(20, 50%, 50%)"
 
+    // Starting X position 
+    let lastStartPos = 60
+
+    // Object destructuring of each step
+    const {firstIndex, secondIndex, currentArray} = step
+
+    for (let barIndex = 0; barIndex < currentArray.length; barIndex++) {
+        ctx.fillStyle = (barIndex === firstIndex || barIndex === secondIndex) ? highlightedBarStyle : regularBarStyle
+        ctx.fillRect(lastStartPos, ctx.canvas.clientHeight / 2 + 200, 10, currentArray[barIndex] * (-10))
+        lastStartPos += 10
+    }
 }

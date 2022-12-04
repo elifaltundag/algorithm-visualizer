@@ -1,9 +1,7 @@
 export interface SortAlgorithmStep {
     firstIndex: number;
-    firstNum: number;
     secondIndex: number;
-    secondNum: number;
-    // requiresSwap: boolean;
+    currentArray: Array<number>;
 }
 
 export function bubbleSort(shuffledNumsArr: Array<number>): {
@@ -12,8 +10,10 @@ export function bubbleSort(shuffledNumsArr: Array<number>): {
             swapCount: number
     } {
 
+    // Don't edit the original shuffled array
     const copyShuffledNumsArr = [...shuffledNumsArr] 
     const size = copyShuffledNumsArr.length
+    
     let swapCount = 0
     let iterationCount = 0
     let algorithmSteps = [] // size = iterationCount + swapCount ??
@@ -22,32 +22,27 @@ export function bubbleSort(shuffledNumsArr: Array<number>): {
     while (!isSorted) {
         isSorted = true
 
-        for (let indx = 0; indx < size; indx++) {
+        for (let barIndex = 0; barIndex < size - 1; barIndex++) {
             iterationCount += 1
             algorithmSteps.push({
-                firstIndex: indx,
-                firstNum: copyShuffledNumsArr[indx],
-                secondIndex: indx + 1,
-                secondNum: copyShuffledNumsArr[indx+1],
-                // requiresSwap: false
+                firstIndex: barIndex,
+                secondIndex: barIndex + 1,
+                currentArray: [...copyShuffledNumsArr]
             })
 
 
 
-            if (copyShuffledNumsArr[indx] > copyShuffledNumsArr[indx + 1]) {
-                const temp = copyShuffledNumsArr[indx];
-                copyShuffledNumsArr[indx] = copyShuffledNumsArr[indx + 1]
-                copyShuffledNumsArr[indx + 1] = temp
+            if (copyShuffledNumsArr[barIndex] > copyShuffledNumsArr[barIndex + 1]) {
+                const temp = copyShuffledNumsArr[barIndex];
+                copyShuffledNumsArr[barIndex] = copyShuffledNumsArr[barIndex + 1]
+                copyShuffledNumsArr[barIndex + 1] = temp
                 swapCount += 1
                 isSorted = false
                 algorithmSteps.push({
-                    firstIndex: indx,
-                    firstNum: copyShuffledNumsArr[indx],
-                    secondIndex: indx + 1,
-                    secondNum: copyShuffledNumsArr[indx+1],
-                    // requiresSwap: false
+                    firstIndex: barIndex + 1,
+                    secondIndex: barIndex,
+                    currentArray: [...copyShuffledNumsArr]
                 })
-                // algorithmSteps[algorithmSteps.length - 1].requiresSwap = true
             }
         }
     }
