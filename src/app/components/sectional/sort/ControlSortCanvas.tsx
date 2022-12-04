@@ -29,7 +29,6 @@ export default function ControlSortCanvas() {
     sortData.iterationCount = iterationCount
     sortData.swapCount = swapCount
 
-    console.log(algorithmSteps)
 
     return (
         <SortCanvas 

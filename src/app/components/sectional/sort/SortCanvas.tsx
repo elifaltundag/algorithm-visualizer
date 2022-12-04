@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "../../../../design/components/canvas.scss";
 
 import { SortAlgorithmStep } from "../../../functions/sortFuncs";
-import { generateBars, generateBubbleSortFrame } from "../../../functions/drawFuncs"; 
+import { generateBars, generateBubbleSortFrame, animateBubbleSort } from "../../../functions/drawFuncs"; 
 
 interface SortCanvasProps {
     canvasRef: React.RefObject<HTMLCanvasElement>;
@@ -22,13 +22,11 @@ export default function SortCanvas(props: SortCanvasProps) {
             const canvasContext = canvas.getContext("2d")
 
             if (canvasContext) {
-                generateBars(shuffledArr, canvasContext)
-                generateBubbleSortFrame(canvasContext, algorithmSteps[0])
+                animateBubbleSort(canvasContext, algorithmSteps)
             }
         }
     })
 
-    // console.log(algorithmSteps[1])
 
     return (
         <div className="canvasContainer">

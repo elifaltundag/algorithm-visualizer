@@ -23,14 +23,31 @@ export function generateBubbleSortFrame(ctx: CanvasRenderingContext2D, step: Sor
     // Object destructuring of each step
     const {firstIndex, secondIndex, requiresSwap, currentArray} = step
 
+    // Clear the previous frame
+    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight)
+    
     for (let barIndex = 0; barIndex < currentArray.length; barIndex++) {
+
         if (barIndex === firstIndex || barIndex === secondIndex) {
             ctx.fillStyle = requiresSwap ? swapRequiredHighlight : noSwapRequiredHighlight
         } else {
             ctx.fillStyle = regularBarStyle
         }
         
-        ctx.fillRect(lastStartPos, ctx.canvas.clientHeight / 2 + 200, 10, currentArray[barIndex] * (-10))
+        ctx.fillRect(lastStartPos, ctx.canvas.clientHeight / 2 - 50, 10, currentArray[barIndex] * (-10))
         lastStartPos += 10
     }
+}
+
+export function animateBubbleSort(ctx: CanvasRenderingContext2D, animationSteps: Array<SortAlgorithmStep>) {
+    // Change step in every 1s: generateBubbleSortFrame(ctx, animationSteps[step])
+    
+    /* 
+    DOESN'T WORK: sorts the array in every 1s
+    */
+    for (let step = 0; step < animationSteps.length; step++) {
+        setTimeout(() => {
+            generateBubbleSortFrame(ctx, animationSteps[step])
+        }, 2000)
+    } 
 }
