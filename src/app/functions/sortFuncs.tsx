@@ -1,10 +1,11 @@
 export interface SortAlgorithmStep {
     firstIndex: number;
     secondIndex: number;
+    requiresSwap: boolean;
     currentArray: Array<number>;
 }
 
-export function bubbleSort(shuffledNumsArr: Array<number>): {
+export function bubbleSortSteps(shuffledNumsArr: Array<number>): {
             algorithmSteps: Array<SortAlgorithmStep>,
             iterationCount: number,
             swapCount: number
@@ -27,12 +28,16 @@ export function bubbleSort(shuffledNumsArr: Array<number>): {
             algorithmSteps.push({
                 firstIndex: barIndex,
                 secondIndex: barIndex + 1,
+                requiresSwap: false,
                 currentArray: [...copyShuffledNumsArr]
             })
 
 
 
             if (copyShuffledNumsArr[barIndex] > copyShuffledNumsArr[barIndex + 1]) {
+                // Swap is required in the last item added to algorithm steps array
+                algorithmSteps[algorithmSteps.length - 1].requiresSwap = true
+
                 const temp = copyShuffledNumsArr[barIndex];
                 copyShuffledNumsArr[barIndex] = copyShuffledNumsArr[barIndex + 1]
                 copyShuffledNumsArr[barIndex + 1] = temp
@@ -41,6 +46,7 @@ export function bubbleSort(shuffledNumsArr: Array<number>): {
                 algorithmSteps.push({
                     firstIndex: barIndex + 1,
                     secondIndex: barIndex,
+                    requiresSwap: false,
                     currentArray: [...copyShuffledNumsArr]
                 })
             }
